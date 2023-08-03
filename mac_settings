@@ -12,3 +12,10 @@ grep 'client-key-data' ~/.kube/config | head -n 1 | awk '{print $2}' | base64 -D
 openssl pkcs12 -export -clcerts -inkey kubecfg.key -in kubecfg.crt -out kubecfg.p12 -name "kubernetes-client"
 
 >> add certificate in browser
+
+
+kubectl apply -f service-account.yml
+
+kubectl apply -f authorization.yml
+
+kubectl apply -f dashboard-access.yml -- for token gen
